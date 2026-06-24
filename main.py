@@ -55,10 +55,10 @@ app.add_middleware(
 try:
     model = joblib.load('models/fraud_xgb_model.pkl')
     scaler = joblib.load('models/data_scaler.pkl')
-    print("✅ XGBoost Model and Preprocessing Scaler loaded safely into memory.")
+    print("[OK] XGBoost Model and Preprocessing Scaler loaded safely into memory.")
 except Exception as e:
-    print(f"❌ Error loading serialized models: {e}")
-    print("⚠️ Activating internal synthetic visualization simulator loop fallback.")
+    print(f"[ERROR] Error loading serialized models: {e}")
+    print("[WARNING] Activating internal synthetic visualization simulator loop fallback.")
     
     class SyntheticModel:
         def predict_proba(self, df):
@@ -195,9 +195,9 @@ def predict_fraud(data: TransactionData, current_user: dict = Depends(get_curren
         }
     except Exception as e:
         # Trace errors right to terminal shell window for deep system observability
-        print("\n💥 --- PIPELINE INFERENCE CRASH TRACE --- 💥")
+        print("\n!!! --- PIPELINE INFERENCE CRASH TRACE --- !!!")
         traceback.print_exc()
-        print("💥 -------------------------------------- 💥\n")
+        print("!!! -------------------------------------- !!!\n")
         raise HTTPException(status_code=500, detail=f"Inference Pipeline Error: {str(e)}")
 
 @app.post("/chat")
