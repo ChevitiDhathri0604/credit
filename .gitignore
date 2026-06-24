@@ -1,0 +1,22 @@
+# Python Virtual Environment
+venv/
+.venv/
+env/
+
+# Python Cache Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Large Dataset Folder (dataset/creditcard.csv is 150MB and exceeds GitHub's limit)
+dataset/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Model checkpoints or local cache files if any
+.ipynb_checkpoints/
+.vscode/
+.idea/
